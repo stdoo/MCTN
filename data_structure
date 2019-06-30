@@ -1,0 +1,18 @@
+text_train, text_test, facet_train, facet_test, covarep_train, covarep_test: ndarry
+
+   - shape: (num_segs, max_seg_len, feature_dim)
+   - 每种特征的 shape 都一样，train 和 test 不过是 num_segs 不一样
+   - 注意三种模态中 segs 的顺序要保持一致，每个 seg 中单词的顺序也要一致 
+
+`feats_dict = {'t': [text_train, text_test, 'text'],
+               'f': [facet_train, facet_test, 'video'],
+               'c': [covarep_train, covarep_test, 'audio'],
+               'train_labels': y_train,
+               'test_labels': y_test
+                }`
+   
+### E2E_MCTN_Model
+
+1. _in: str 't' (# 输入模态，通过命令行参数 feature[0] 指定)
+2. _out: str 'a' (# 输出模态，通过命令行参数 feature[1] 指定)
+3. input_train: ndarray (num_segs, max_seg_len, embedding) (# 输入模态的训练数据)         
